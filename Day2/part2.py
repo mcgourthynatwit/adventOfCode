@@ -29,30 +29,24 @@ def main():
 
         # split lines
         valid = True 
-
+        red_count = 0
+        green_count = 0
+        blue_count = 0
         for s in sets:
-            red_count = 0
-            green_count = 0
-            blue_count = 0
+
 
             pairs = split(s.strip())
             
             for number, color in pairs:
-                if color == "red":
-                    red_count += int(number)
-                elif color == "blue":
-                    blue_count += int(number)
-                elif color == "green":
-                    green_count += int(number)
-
-            if red_count <= 12 and blue_count <= 14 and green_count <= 13:
-                continue
-            else:
-                valid = False
-                break
-        if valid is True:
-            
-            total += int(ID)             
+                if color == "red" and int(number) > red_count:
+                    red_count = int(number)
+                elif color == "blue" and int(number) > blue_count :
+                    blue_count = int(number)
+                elif color == "green" and int(number) > green_count:
+                    green_count = int(number)
+        total += (blue_count * red_count * green_count)    
+        print('for line', line ,' the total is ', total, red_count, green_count, blue_count)
+       
        
     print(total)
              
