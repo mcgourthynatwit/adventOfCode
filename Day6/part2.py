@@ -18,8 +18,10 @@ def getRecord(time, dis):
     held = 0
     ways = 0
     while time > 0 :
-        if ( time * held ) > dis:
+        if ( time * held ) < dis:
             ways += 1
+        else:
+            return ways
         time -= 1
         held += 1
     return ways
@@ -36,9 +38,12 @@ def main():
     dis = getNums(disArr)
 
     ways = getRecord(time, dis)
-    print(ways)    
+    
+    records = time - (2*ways)
+    print(records + 1)    
 
 
 main()
 
+#29432455
 
